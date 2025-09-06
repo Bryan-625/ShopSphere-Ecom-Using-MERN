@@ -1,0 +1,35 @@
+import Item from "../Item/Item";
+import "../Popular/Popular.css";
+import data_product from "../assets/data";
+
+const Popular = () => {
+  return (
+    <>
+      <div className="popular-outer">
+        <div className="popular">
+          <div className="popular-text">
+            <h1 id="popular-text-1">POPULAR IN </h1>
+            <h1 id="popular-text-2"> ALL CATEGORIES</h1>
+          </div>
+          <hr />
+          <div className="popular-item">
+            {data_product.map((item, index) => {
+              return (
+                <Item
+                  key={index}
+                  id={item.id}
+                  name={item.name}
+                  image={item.image}
+                  new_price={item.new_price}
+                  old_price={item.old_price}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Popular;
