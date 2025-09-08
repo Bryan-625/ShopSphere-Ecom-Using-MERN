@@ -67,6 +67,21 @@
 
 @media (max-width: 800px) {
   .item {
+    width: 180px;
+  }
+
+  .item img {
+    width: 175px;
+    height: 190px;
+  }
+
+  .item p {
+    width: 180px;
+  }
+}
+
+@media (max-width: 650px) {
+  .item {
     width: 140px;
     padding-bottom: 20px;
     font-size: 12px;
@@ -118,4 +133,3 @@
     font-size: 12px;
   }
 }
-
