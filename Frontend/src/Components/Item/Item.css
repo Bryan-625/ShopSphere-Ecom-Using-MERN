@@ -68,6 +68,8 @@
 @media (max-width: 800px) {
   .item {
     width: 180px;
+    padding-bottom: 20px;
+    font-size: 12px;
   }
 
   .item img {
@@ -76,7 +78,17 @@
   }
 
   .item p {
+    margin: 6px 0px;
     width: 180px;
+    font-size: 12px;
+  }
+
+  .item-price-new {
+    font-size: 12px;
+  }
+
+  .item-price-old {
+    font-size: 12px;
   }
 }
 
