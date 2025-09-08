@@ -49,7 +49,49 @@
 .collections-item {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(4, 250px); 
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 30px;
-  justify-content: center; 
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  #new-collections-text-1 {
+    font-size: 30px;
+  }
+
+  #new-collections-text-2 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 800px) {
+  #new-collections-text-1 {
+    font-size: 25px;
+  }
+
+  #new-collections-text-2 {
+    font-size: 25px;
+  }
+
+  .collections-item {
+    margin-top: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 500px) {
+  #new-collections-text-1 {
+    font-size: 22px;
+  }
+
+  #new-collections-text-2 {
+    font-size: 22px;
+  }
+
+  .collections-item {
+    margin-top: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
 }

@@ -67,19 +67,19 @@
 
 @media (max-width: 800px) {
   .item {
-    width: 120px;
+    width: 140px;
     padding-bottom: 20px;
     font-size: 12px;
   }
 
   .item img {
-    width: 120px;
-    height: 130px;
+    width: 140px;
+    height: 150px;
   }
 
   .item p {
     margin: 6px 0px;
-    width: 120px;
+    width: 140px;
     font-size: 12px;
   }
 
@@ -94,19 +94,19 @@
 
 @media (max-width: 500px) {
   .item {
-    width: 160px;
+    width: 155px;
     padding-bottom: 20px;
     font-size: 12px;
   }
 
   .item img {
-    width: 160px;
+    width: 155px;
     height: 170px;
   }
 
   .item p {
     margin: 6px 0px;
-    width: 160px;
+    width: 155px;
     font-size: 12px;
   }
 
