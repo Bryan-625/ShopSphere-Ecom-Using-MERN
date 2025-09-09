@@ -234,7 +234,7 @@
 
   .nav-menu {
     display: none;
-    height: 78px;
+    height: 50px;
     width: 97%;
     position: absolute;
     background-color: white;
@@ -252,7 +252,7 @@
 
   .nav-login-cart button {
     width: 60px;
-    height: 28px;
+    height: 30px;
     font-size: 13px;
   }
 

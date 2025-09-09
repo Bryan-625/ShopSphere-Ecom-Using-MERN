@@ -29,26 +29,27 @@ const Navbar = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-  const handleResize = () => {
-    if (window.innerWidth > 800 && isDropdownOpen) {
-      // Close dropdown automatically on larger screens
-      menuRef.current.classList.remove("nav-menu-visible");
-      setIsDropdownOpen(false);
-      const dropdownIcon = document.querySelector(".nav-dropdown");
-      if (dropdownIcon) dropdownIcon.classList.remove("open");
-    }
-  };
+    const handleResize = () => {
+      if (window.innerWidth > 800 && isDropdownOpen) {
+        // Close dropdown automatically on larger screens
+        menuRef.current.classList.remove("nav-menu-visible");
+        setIsDropdownOpen(false);
+        const dropdownIcon = document.querySelector(".nav-dropdown");
+        if (dropdownIcon) dropdownIcon.classList.remove("open");
+      }
+    };
 
-  window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize);
 
-  return () => window.removeEventListener("resize", handleResize);
-}, [isDropdownOpen]);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isDropdownOpen]);
 
   return (
     <>
       <div className="navbar">
         <div className="nav-logo">
-          <img src={logo} alt="Website-logo" />
+          <Link to="/"><img src={logo} alt="Website-logo" /></Link>
+
           <p className="website-logo-text1">Shop</p>
           <p className="website-logo-text2">Sphere</p>
         </div>
@@ -101,7 +102,9 @@ const Navbar = () => {
       {/* Spacer to push page content down when dropdown opens */}
       <div
         style={{
-          height: isDropdownOpen ? menuRef.current?.offsetHeight +-1+ "px" : "0px",
+          height: isDropdownOpen
+            ? menuRef.current?.offsetHeight + -1 + "px"
+            : "0px",
           transition: "height 0.3s ease",
         }}
       ></div>

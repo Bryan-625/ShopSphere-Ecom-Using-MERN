@@ -1,6 +1,5 @@
-.descriptionbox-outer
-{
-    background: #ff414115;
+.descriptionbox-outer {
+  background: #ff414115;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,44 +8,82 @@
   width: 100vw;
 }
 
-.descriptionbox
-{
-    background: white;
-margin: 20px;
-max-width: 97%;
+.descriptionbox {
+  background: white;
+  margin: 20px;
+  max-width: 97%;
 }
 
-.descriptionbox-navigator
-{
-    display: flex;
-
+.descriptionbox-navigator {
+  display: flex;
 }
 
-.descriptionbox-nav-box
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: 600;
-    width: 170px;
-    height: 50px;
+.descriptionbox-nav-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  width: 170px;
+  height: 50px;
+  border: 1px solid #d0d0d0;
+}
+
+.descriptionbox-nav-box.fade {
+  background: #fbfbfb;
+
+  color: #555;
+}
+
+.descriptionbox-description {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border: 1px solid #d0d0d0;
+  padding: 47px;
+  padding-bottom: 70px;
+  font-size: 14px;
+}
+
+@media (max-width: 1024px) {
+  .descriptionbox-nav-box {
+    font-size: 13px;
+
+    width: 150px;
+    height: 45px;
     border: 1px solid #d0d0d0;
+  }
+  .descriptionbox-description {
+    gap: 20px;
+    font-size: 13px;
+    padding: 38px;
+  }
 }
 
-.descriptionbox-nav-box.fade
-{
-    background: #FBFBFB;
-
-    color: #555;
+@media (max-width: 800px) {
+  .descriptionbox-nav-box {
+    font-size: 11px;
+    width: 130px;
+    height: 40px;
+    border: 1px solid #d0d0d0;
+  }
+  .descriptionbox-description {
+    gap: 15px;
+    font-size: 11px;
+    padding: 37px;
+  }
 }
 
-.descriptionbox-description
-{
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    border: 1px solid #D0D0D0;
-    padding: 48px;
-    padding-bottom: 70px;
+@media (max-width: 500px) {
+  .descriptionbox-nav-box {
+    font-size: 10px;
+    width: 90px;
+    height: 35px;
+    border: 1px solid #d0d0d0;
+  }
+  .descriptionbox-description {
+    gap: 10px;
+    font-size: 10px;
+    padding: 18px;
+  }
 }
