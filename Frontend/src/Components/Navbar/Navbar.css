@@ -207,13 +207,13 @@
   .navbar {
     padding: 10px 0px;
     height: 40px;
-    align-items: flex-start;
+    align-items: center;
     position: relative;
   }
 
   .nav-dropdown {
     display: block;
-    margin-top: 5px;
+    margin-top: 1px;
     width: px;
     height: 28px;
     rotate: -90deg;
