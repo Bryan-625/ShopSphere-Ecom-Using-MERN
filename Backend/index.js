@@ -6,15 +6,20 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const { log } = require("console");
+require("dotenv").config();
 
 app.use(express.json());
 app.use(cors());
 
 //Data connection with mongodb
-mongoose.connect(
-  "mongodb+srv://shopsphere:shopsphere123@cluster0.0vfui2x.mongodb.net/ShopSphere-e-commerce-database"
-);
+mongoose.connect(process.env.MongoAtlasDBUrl)
+  .then(() => {
+    console.log("✅ Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.error("❌ MongoDB connection error:", err);
+    process.exit(1);   
+  });
 
 //api creation
 
@@ -46,7 +51,7 @@ app.post("/upload", upload.single("product"), (req, res) => {
 });
 
 //creating schema using mongoose
-const Product = mongoose.model("Product", {
+const Product = mongoose.model("Product", { 
   id: {
     type: Number,
     require: true,
