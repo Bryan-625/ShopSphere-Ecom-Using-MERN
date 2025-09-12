@@ -1,10 +1,13 @@
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import "../Admin/Admin.css"
 
 const Admin=()=>
 {
     return(
         <>
-        <div className="admin"></div>
+        <div className="admin">
+            <Sidebar/>
+        </div>
         </>
     )
 }
