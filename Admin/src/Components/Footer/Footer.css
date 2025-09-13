@@ -1,10 +1,10 @@
 .footer {
-  margin-top: 30px;
+  margin-top: 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 18px;
+  gap: 15px;
 }
 
 .footer-logo {
@@ -20,13 +20,13 @@
 
 #footer-logo-text1 {
   color: #ff4141;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 600;
 }
 
 #footer-logo-text2 {
   color: #ff9a00;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 600;
   margin-left: -20px;
 }
@@ -54,7 +54,6 @@
   height: 20px;
   width: 20px;
   padding: 10px;
-
   background: #fbfbfb;
   border: 1px solid #ebebeb;
 }
@@ -63,9 +62,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: #1a1a1a;
   font-size: 15px;
 }
@@ -74,18 +73,25 @@
   width: 80%;
   border: none;
   border-radius: 10px;
-  height: 3px;
+  height: 2px;
   background-color: grey;
 }
 
 @media (max-width: 800px) {
+  .footer {
+    gap: 13px;
+  }
+  .footer-logo img {
+    height: 40px;
+  }
+
   #footer-logo-text1 {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   #footer-logo-text2 {
     color: #ff9a00;
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .footer-icons-container img {
@@ -115,12 +121,12 @@
 
 @media (max-width: 500px) {
   #footer-logo-text1 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   #footer-logo-text2 {
     color: #ff9a00;
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .footer-icons-container img {
