@@ -7,6 +7,7 @@ const AddProduct = () => {
   const [image, setImage] = useState(false);
   const [productDetails, setProductDetails] = useState({
     name: "",
+    description: "",
     image: "",
     category: "women",
     new_price: "",
@@ -25,6 +26,20 @@ const AddProduct = () => {
   };
 
   const Add_product = async () => {
+    if (
+      !productDetails.name.trim() || 
+      !productDetails.description.trim() ||
+      !productDetails.old_price.trim() ||
+      !productDetails.new_price.trim() ||
+      !image
+    ) {
+      Swal.fire({
+        icon: "warning",
+        title: "Missing Information",
+        text: "Please fill in all fields and upload an image before adding the product.",
+      });
+      return; // stop execution if validation fails
+    }
     console.log(productDetails);
     let responseData;
     let product = productDetails;
@@ -84,6 +99,14 @@ const AddProduct = () => {
               type="text"
               name="name"
               placeholder="Type here"
+            />
+            <p>Product Description</p>
+            <input
+              value={productDetails.description}
+              onChange={changeHandler}
+              type="text"
+              name="description"
+              placeholder="Add Product Description"
             />
           </div>
           <div className="addproduct-price">

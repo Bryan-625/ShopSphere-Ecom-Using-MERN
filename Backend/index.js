@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
+const { type } = require("os");
 require("dotenv").config();
 
 app.use(express.json());
@@ -60,6 +61,11 @@ const Product = mongoose.model("Product", {
     type: String,
     require: true,
   },
+  description:
+  {
+    type:String,
+    require:true,
+  },
   image: {
     type: String,
     require: true,
@@ -104,6 +110,7 @@ app.post("/addproduct",async(req,res)=>
   const product=new Product({
     id:id,
     name:req.body.name,
+    description:req.body.description,
     image:req.body.image,
     category:req.body.category,
     new_price:req.body.new_price,
@@ -144,6 +151,6 @@ app.listen(port, (error) => {
   if (!error) {
     console.log("Server running on Port:" + port);
   } else {
-    console.log("Error" + error);
+    console.log("Error" + error); 
   }
 });
