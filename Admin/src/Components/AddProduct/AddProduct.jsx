@@ -27,7 +27,7 @@ const AddProduct = () => {
 
   const Add_product = async () => {
     if (
-      !productDetails.name.trim() || 
+      !productDetails.name.trim() ||
       !productDetails.description.trim() ||
       !productDetails.old_price.trim() ||
       !productDetails.new_price.trim() ||
@@ -72,17 +72,30 @@ const AddProduct = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          data.success
-            ? Swal.fire({
-                title: "Product Added Successfully!",
-                icon: "success",
-                confirmButtonText: "OK",
-              })
-            : Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-              });
+          if (data.success) {
+            Swal.fire({
+              title: "Product Added Successfully!",
+              icon: "success",
+              confirmButtonText: "OK",
+            });
+
+            // Reset input fields after successful product add
+            setProductDetails({
+              name: "",
+              description: "",
+              image: "",
+              category: "women",
+              new_price: "",
+              old_price: "",
+            });
+            setImage(false);
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+            });
+          }
         });
     }
   };

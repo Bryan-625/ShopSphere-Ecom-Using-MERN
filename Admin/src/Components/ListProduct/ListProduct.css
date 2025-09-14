@@ -1,0 +1,146 @@
+.list-product-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: #ff414115;
+}
+
+.list-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 591px;
+  padding: 10px 50px;
+  margin: 20px;
+  border-radius: 6px;
+  background: white;
+}
+
+.listproduct-format-main {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 0px;
+  color: #454545;
+  font-size: 15px;
+  font-weight: 600;
+  align-items: center;  
+  
+}
+
+.listproduct-format-main.header {
+  padding: 10px 0;
+  color: #454545;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: 2px solid #ddd; 
+}
+
+.listproduct-format {
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 0;
+}
+
+.listproduct-product-icon {
+  height: 68px;
+}
+
+.listproduct-remove-icon {
+  cursor: pointer;
+  margin: auto;
+}
+
+.listproduct-allproducts {
+  max-height: 445px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.listproduct-allproducts::-webkit-scrollbar {
+  display: none;
+}
+
+.list-product-h1 {
+  display: flex;
+  gap: 6px;
+  font-size: 11.5px;
+}
+
+#list-product-h1-text1 {
+  color: #ff4141;
+}
+
+#list-product-h1-text2 {
+  color: #ff9a00;
+}
+
+@media (max-width: 1024px) {
+  .list-product-h1 {
+    font-size: 10.5px;
+  }
+  .listproduct-format {
+    font-size: 12px;
+  }
+  .listproduct-product-icon {
+    height: 65px;
+  }
+  .listproduct-format-main {
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 800px) {
+  .list-product {
+    box-sizing: border-box;
+    width: 95%;
+    height: 100%;
+    padding: 10px 30px;
+  }
+   .list-product-h1 {
+    font-size: 10px;
+  }
+
+  .listproduct-format-main {
+    padding: 15px 0px;
+    color: #454545;
+    font-size: 12px;
+  }
+    .listproduct-format {
+    font-size: 12px;
+  }
+    .listproduct-product-icon {
+    height: 60px;
+  }
+}
+
+@media (max-width: 500px) {
+  .list-product {
+    box-sizing: border-box;
+    width: 95%;
+    height: 100%;
+    padding: 10px 30px;
+  }
+
+   .list-product-h1 {
+    font-size: 8.5px;
+  }
+
+  .listproduct-format-main {
+    padding: 15px 0px;
+    color: #454545;
+    font-size: 10.5px;
+  }
+    .listproduct-format {
+    font-size: 10.5px;
+  }
+    .listproduct-product-icon {
+    height: 55px;
+  }
+}
