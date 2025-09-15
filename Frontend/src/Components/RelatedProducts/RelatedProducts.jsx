@@ -1,8 +1,28 @@
 import "../RelatedProducts/RelatedProducts.css";
-import data_product from "../assets/data";
 import Item from "../Item/Item";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const RelatedProducts = ({category}) => {
+
+  const [related, setRelated] = useState([]);
+
+  useEffect(() => {
+    const fetchRelated = async () => {
+      try {
+        let res = await fetch(`http://localhost:4000/relatedproducts/${category}`);
+        let data = await res.json();
+        setRelated(data);
+      } catch (error) {
+        console.error("Error fetching related products:", error);
+      }
+    };
+
+    if (category) {
+      fetchRelated();
+    }
+  }, [category]);
+
   return (
     <>
       <div className="relatedproducts-outer">
@@ -13,7 +33,7 @@ const RelatedProducts = ({category}) => {
           </div>
           <hr />
           <div className="relatedproducts-item">
-            {data_product.filter((item) => item.category === category).map((item, index) => {
+            {related.filter((item) => item.category === category).map((item, index) => {
              
                 return (
                   <Item

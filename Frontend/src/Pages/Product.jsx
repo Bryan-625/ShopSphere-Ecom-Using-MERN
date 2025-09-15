@@ -10,6 +10,10 @@ const Product = () => {
   const { all_product } = useContext(ShopContext);
   const { productId } = useParams();
   const product = all_product.find((event) => event.id === Number(productId));
+
+    if (!product) {
+    return <h2>Loading product details...</h2>;  // prevent error until product is ready
+  }
   return (
     <>
       <Breadcrums product={product} />

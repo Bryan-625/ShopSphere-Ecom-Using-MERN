@@ -210,22 +210,24 @@ app.post("/login", async (req, res) => {
       res.json({ success: false, errors: "Wrong Password" });
     }
   } else {
-    res.json({ success: false, errors: "Email not registered. Please sign up first" });
+    res.json({
+      success: false,
+      errors: "Email not registered. Please sign up first",
+    });
   }
 });
 
 //creating endpoint for new collection data
-app.get("/newcollections",async(req,res)=>
-{
-  let products=await Product.find({});
-  let newcollection=products.slice(1).slice(-8);
+app.get("/newcollections", async (req, res) => {
+  let products = await Product.find({});
+  let newcollection = products.slice(1).slice(-8);
   console.log("New Collection Fetched");
   res.send(newcollection);
-})
+});
 
 //Popular in all category
-app.get("/popularinallcategory",async(req,res)=>
-{ try {
+app.get("/popularinallcategory", async (req, res) => {
+  try {
     // Fetch products by category
     let menProducts = await Product.find({ category: "men" }).skip(8).limit(4);
     let womenProducts = await Product.find({ category: "women" }).limit(4);
@@ -244,13 +246,76 @@ app.get("/popularinallcategory",async(req,res)=>
     console.error("Error fetching products:", err);
     res.status(500).send({ error: "Internal Server Error" });
   }
+});
 
-})
+//creating middleware to fetch user
+const fetchUser = async (req, res, next) => {
+  const token = req.header("auth-token");
+  if (!token) {
+    res.status(401).send({ errors: "Please authenticate using valid token" });
+  } else {
+    try {
+      const data = jwt.verify(token, "secret_ecom");
+      req.user = data.user;
+      next();
+    } catch (error) {
+      res.status(401).send({ errors: "Please authenticate using valid token" });
+    }
+  }
+};
+
+//creating endpoint for adding products in cart data
+app.post("/addtocart", fetchUser, async (req, res) => {
+  console.log(req.body, req.user);
+  console.log("Added", req.body.itemId);
+  let userData = await Users.findOne({ _id: req.user.id });
+  userData.cartData[req.body.itemId] += 1;
+  await Users.findOneAndUpdate(
+    { _id: req.user.id },
+    { cartData: userData.cartData }
+  );
+  res.send("Added");
+});
+
+//craeting endpoint to remove product from cart data
+app.post("/removefromcart", fetchUser, async (req, res) => {
+  console.log("Removed", req.body.itemId);
+  let userData = await Users.findOne({ _id: req.user.id });
+  if (userData.cartData[req.body.itemId] > 0)
+    userData.cartData[req.body.itemId] -= 1;
+  await Users.findOneAndUpdate(
+    { _id: req.user.id },
+    { cartData: userData.cartData }
+  );
+  res.send("Removed");
+});
+
+//creating endpoint to get cart items
+app.post("/getcart", fetchUser, async (req, res) => {
+  console.log("Get cart");
+  let userData = await Users.findOne({ _id: req.user.id });
+  res.json(userData.cartData);
+});
+
+// Related products API
+app.get("/relatedproducts/:category", async (req, res) => {
+  try {
+    const { category } = req.params;
+
+    // Get products from the same category 
+    const products = await Product.find({ category }).limit(4);
+
+    res.send(products);
+  } catch (err) {
+    console.error("Error fetching related products:", err);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+});
 
 app.listen(port, (error) => {
   if (!error) {
     console.log("Server running on Port:" + port);
   } else {
-    console.log("Error" + error); 
+    console.log("Error" + error);
   }
 });
