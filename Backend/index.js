@@ -7,7 +7,7 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const { type } = require("os");
-const { error } = require("console");
+const { error, log } = require("console");
 require("dotenv").config();
 
 app.use(express.json());
@@ -207,12 +207,45 @@ app.post("/login", async (req, res) => {
       const token = jwt.sign(data, "secret_ecom");
       res.json({ success: true, token });
     } else {
-      res.json({ success: false, error: "Wrong Password" });
+      res.json({ success: false, errors: "Wrong Password" });
     }
   } else {
-    res.json({ success: false, errors: "Wrong Email Id" });
+    res.json({ success: false, errors: "Email not registered. Please sign up first" });
   }
 });
+
+//creating endpoint for new collection data
+app.get("/newcollections",async(req,res)=>
+{
+  let products=await Product.find({});
+  let newcollection=products.slice(1).slice(-8);
+  console.log("New Collection Fetched");
+  res.send(newcollection);
+})
+
+//Popular in all category
+app.get("/popularinallcategory",async(req,res)=>
+{ try {
+    // Fetch products by category
+    let menProducts = await Product.find({ category: "men" }).skip(8).limit(4);
+    let womenProducts = await Product.find({ category: "women" }).limit(4);
+    let kidsProducts = await Product.find({ category: "kid" }).limit(4);
+
+    // Combine response
+    let popularProducts = {
+      men: menProducts,
+      women: womenProducts,
+      kid: kidsProducts,
+    };
+
+    console.log("Popular in all categories fetched");
+    res.send(popularProducts);
+  } catch (err) {
+    console.error("Error fetching products:", err);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+
+})
 
 app.listen(port, (error) => {
   if (!error) {

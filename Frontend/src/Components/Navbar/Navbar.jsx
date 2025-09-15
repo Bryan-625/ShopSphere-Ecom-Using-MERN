@@ -6,6 +6,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
 
+
 const Navbar = () => {
   const location = useLocation();
   const [menubar, setMenubar] = useState("shop");
@@ -48,7 +49,9 @@ const Navbar = () => {
     <>
       <div className="navbar">
         <div className="nav-logo">
-          <Link to="/"><img src={logo} alt="Website-logo" /></Link>
+          <Link to="/">
+            <img src={logo} alt="Website-logo" />
+          </Link>
 
           <p className="website-logo-text1">Shop</p>
           <p className="website-logo-text2">Sphere</p>
@@ -89,9 +92,22 @@ const Navbar = () => {
         </ul>
 
         <div className="nav-login-cart">
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
+          {localStorage.getItem("auth-token") ? (
+            <button
+              onClick={() => {
+                localStorage.removeItem("auth-token");
+                alert("Logout Successful!");
+                window.location.replace("/");
+              }}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+          )}
+
           <Link to="/cart">
             <img src={cart_icon} alt="Cart-icon" />
           </Link>

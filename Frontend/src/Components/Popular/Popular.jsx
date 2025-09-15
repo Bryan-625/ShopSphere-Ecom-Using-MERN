@@ -1,8 +1,25 @@
+import { useState } from "react";
 import Item from "../Item/Item";
 import "../Popular/Popular.css";
-import data_product from "../assets/data";
+
 
 const Popular = () => {
+  const [popularProduct, setpopularProduct] = useState([]);
+
+  useState(() => {
+    fetch("http://localhost:4000/popularinallcategory")
+      .then((res) => res.json())
+      .then((data) => {
+          console.log("Fetched data:", data);
+         const allProducts = [
+          ...data.women,
+          ...data.men,
+          ...data.kid,
+        ];
+        setpopularProduct(allProducts);
+      });
+  }, []);
+
   return (
     <>
       <div className="popular-outer">
@@ -13,7 +30,7 @@ const Popular = () => {
           </div>
           <hr />
           <div className="popular-item">
-            {data_product.map((item, index) => {
+            {popularProduct.map((item, index) => {
               return (
                 <Item
                   key={index}
