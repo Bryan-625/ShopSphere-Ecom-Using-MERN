@@ -1,4 +1,4 @@
-const port =process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -49,7 +49,7 @@ app.post("/upload", upload.single("product"), (req, res) => {
   console.log(req.file);
   res.json({
     success: 1,
-    image_url: `http://localhost:${port}/images/${req.file.filename}`,
+    image_url: `https://shopsphere-ecom-backend.onrender.com/images/${req.file.filename}`,
   });
 });
 
@@ -302,7 +302,7 @@ app.get("/relatedproducts/:category", async (req, res) => {
   try {
     const { category } = req.params;
 
-    // Get products from the same category 
+    // Get products from the same category
     const products = await Product.find({ category }).limit(4);
 
     res.send(products);
@@ -332,7 +332,6 @@ app.post("/checkout", fetchUser, async (req, res) => {
     res.status(500).json({ success: false, message: "Checkout failed" });
   }
 });
-
 
 app.listen(port, (error) => {
   if (!error) {
