@@ -97,7 +97,6 @@ npm run dev
 <img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L3.png" width="150"/>
 
 
-Login Page (Laptop) <img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L3.png" width="150"/>
 ## 👨‍💻 About the Developer
 Hi! I’m **Rahul Rouchan Gogoi**, passionate about full-stack development.  
 - LinkedIn: [Rahul Rouchan Gogoi](http://www.linkedin.com/in/rahul-rouchan-gogoi-04072001r)  
