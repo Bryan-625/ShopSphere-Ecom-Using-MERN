@@ -68,20 +68,29 @@ npm run dev
 
 
 ## Explore
-![Scan](https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/ShopSphere-64.png)
+<img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/ShopSphere-512.png" width="150"/>
 
-- **Frontend:** [Launch](https://shopsphere-ecom-frontend.onrender.com)  
-- **Backend:** [Access](https://shopsphere-ecom-backend.onrender.com)  
-- **Admin:** Private link
+Frontend: Click to launch
 
-## 📸 Screenshots
-| Mobile | Laptop |
-|--------|--------|
-| ![Home](https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/1-64.jpg) | ![Home](https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L1-64.png) |
-| ![Product](https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/2-64.jpg) | ![Home](https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L2-64.png) |
-| ![Cart](https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/3-64.png) | ![Login](https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L3-64.png) |
-| ![Admin](https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/A4-64.jpg) | |
+Backend: Click to access
 
+Admin Dashboard: Private link (not publicly shared)
+
+📸 Screenshots
+
+Home Section (Mobile) <img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/1.jpg" width="150"/>
+
+Product View Section (Mobile) <img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/2.jpg" width="150"/>
+
+Cart Section (Mobile) <img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/3.png" width="150"/>
+
+Admin Page (Mobile) <img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/A4.jpg" width="150"/>
+
+Home Page (Laptop) <img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L1.png" width="150"/>
+
+Home Page (Laptop) <img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L2.png" width="150"/>
+
+Login Page (Laptop) <img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L3.png" width="150"/>
 ## 👨‍💻 About the Developer
 Hi! I’m **Rahul Rouchan Gogoi**, passionate about full-stack development.  
 - LinkedIn: [Rahul Rouchan Gogoi](http://www.linkedin.com/in/rahul-rouchan-gogoi-04072001r)  
