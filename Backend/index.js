@@ -32,7 +32,7 @@ mongoose
 
 // API creation
 app.get("/", (req, res) => {
-  res.send("Rahul Rouchan Gogoi's ShopSphere App is running 🚀");
+  res.send(`Rahul Rouchan Gogoi's ShopSphere App says hi! 🛒 All systems are green ✅ Ready to shop!<br>Current Server Time: ${new Date().toLocaleString()}`);
 });
 
 // Multer for file upload handling
