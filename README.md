@@ -61,9 +61,6 @@ Admins can:
 * cd ShopSphere
 * npm install
 * npm run dev
-* Run server: `npm run dev`  
-* Access: Frontend `http://localhost:3000`, Admin: private link
-
 
 
 ## Explore the Website
