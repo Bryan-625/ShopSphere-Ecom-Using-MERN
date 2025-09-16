@@ -65,6 +65,8 @@ Admins can:
 
 ## Explore the Website
 
+<img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/ShopSphere-512.png" width="150"/>
+
 - **Frontend:** [Click to launch](https://shopsphere-ecom-frontend.onrender.com)  
 - **Backend:** [Click to access](https://shopsphere-ecom-backend.onrender.com)  
 - **Admin Dashboard:** Private link (not publicly shared)
