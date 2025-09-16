@@ -57,13 +57,12 @@ Admins can:
 
 ## 🧾 Setup Instructions
 
-git clone https://github.com/RahulRouchanGogoi/ShopSphere.git
-cd ShopSphere
-npm install
-npm run dev
-
-5. Run server: `npm run dev`  
-6. Access: Frontend `http://localhost:3000`, Admin: private link
+* git clone https://github.com/RahulRouchanGogoi/ShopSphere.git
+* cd ShopSphere
+* npm install
+* npm run dev
+* Run server: `npm run dev`  
+* Access: Frontend `http://localhost:3000`, Admin: private link
 
 
 
