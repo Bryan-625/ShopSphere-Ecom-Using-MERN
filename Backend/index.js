@@ -27,7 +27,7 @@ mongoose
 //api creation
 
 app.get("/", (req, res) => {
-  res.send("Express app is running");
+  res.send("Rahul Rouchan Gogoi's ShopSphere App is running 🚀");
 });
 
 //Image Storage Engine
