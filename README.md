@@ -88,13 +88,13 @@ npm run dev
 <img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/A4.jpg" width="150"/>
 
 **Home Page (Laptop)**  
-<img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L1.png" width="150"/>
+<img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L1.png" width="300"/>
 
 **Home Page (Laptop)**  
-<img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L2.png" width="150"/>
+<img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L2.png" width="300"/>
 
 **Login Page (Laptop)**  
-<img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L3.png" width="150"/>
+<img src="https://github.com/RahulRouchanGogoi/ShopSphere-Ecom-Using-MERN/blob/main/Readme%20Images/L3.png" width="300"/>
 
 
 ## 👨‍💻 About the Developer
