@@ -2,13 +2,55 @@ import { useContext } from "react";
 import "../CartItems/CartItems.css";
 import remove_icon from "../assets/cart_cross_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
+import Swal from "sweetalert2";
 
 const CartItems = () => {
-  const { all_product, cartItems, removeFromCart, getTotalCartAmount } =
-    useContext(ShopContext);
+  const {
+    all_product,
+    cartItems,
+    removeFromCart,
+    getTotalCartAmount,
+    getTotalCartItems,
+  } = useContext(ShopContext);
 
   const totalAmount = getTotalCartAmount();
   const hasItems = totalAmount > 0;
+
+  const handleCheckout = () => {
+    if (!localStorage.getItem("auth-token")) {
+      Swal.fire("Login required", "Please login to place an order.", "warning");
+      return;
+    }
+
+    fetch("http://localhost:4000/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("auth-token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          Swal.fire({
+            title: "🎉 Order Successful!",
+            text: "Your order has been placed successfully.",
+            icon: "success",
+            confirmButtonText: "OK",
+            allowOutsideClick: false,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.reload(); // reload only after OK
+            }
+          });
+        } else {
+          Swal.fire("Error", data.message, "error");
+        }
+      })
+      .catch(() => {
+        Swal.fire("Error", "Something went wrong!", "error");
+      });
+  };
 
   return (
     <div className="cartitems-outer">
@@ -90,7 +132,7 @@ const CartItems = () => {
                 <h3>&#8377;{totalAmount}</h3>
               </div>
             </div>
-            <button disabled={!hasItems}>
+            <button disabled={!hasItems} onClick={handleCheckout}>
               {hasItems ? "PROCEED TO CHECKOUT" : "Add items to checkout"}
             </button>
           </div>

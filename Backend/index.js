@@ -312,6 +312,28 @@ app.get("/relatedproducts/:category", async (req, res) => {
   }
 });
 
+// Checkout API - empties the user's cart
+app.post("/checkout", fetchUser, async (req, res) => {
+  try {
+    let userData = await Users.findOne({ _id: req.user.id });
+
+    // Reset cart
+    let newCart = {};
+    for (let i = 0; i < 300; i++) {
+      newCart[i] = 0;
+    }
+
+    userData.cartData = newCart;
+    await userData.save();
+
+    res.json({ success: true, message: "Order placed successfully!" });
+  } catch (err) {
+    console.error("Checkout error:", err);
+    res.status(500).json({ success: false, message: "Checkout failed" });
+  }
+});
+
+
 app.listen(port, (error) => {
   if (!error) {
     console.log("Server running on Port:" + port);

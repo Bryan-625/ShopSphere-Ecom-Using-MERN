@@ -16,7 +16,6 @@ const LoginSignup = () => {
 
   const login = async () => {
     console.log("Login function executed", formData);
-    console.log("Signup function executed", formData);
     let responseData;
     await fetch("http://localhost:4000/login", {
       method: "POST",
@@ -31,7 +30,14 @@ const LoginSignup = () => {
 
     if (responseData.success) {
       localStorage.setItem("auth-token", responseData.token);
-      window.location.replace("/");
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful!",
+        text: "Welcome back!",
+        confirmButtonText: "Continue",
+      }).then(() => {
+        window.location.replace("/");
+      });
     } else {
       Swal.fire({
         icon: "error",
@@ -57,7 +63,14 @@ const LoginSignup = () => {
 
     if (responseData.success) {
       localStorage.setItem("auth-token", responseData.token);
-      window.location.replace("/");
+      Swal.fire({
+        icon: "success",
+        title: "Signup Successful!",
+        text: "You have signed up successfully!",
+        confirmButtonText: "Continue",
+      }).then(() => {
+        window.location.replace("/");
+      });
     } else {
       Swal.fire({
         icon: "error",

@@ -111,6 +111,13 @@
   cursor: pointer;
 }
 
+.productdisplay-right-sizes div:active,
+.productdisplay-right-sizes div:focus {
+  background-color: #007bff; 
+  color: white; 
+  border-color: #0056b3; 
+}
+
 .productdisplay-right button {
   width: 160px;
   height: 40px;
@@ -338,7 +345,7 @@
   }
 
   .productdisplay-main-img {
-    width: 340px;
+    width: 238px;
     height: auto;
   }
 
@@ -431,7 +438,7 @@
   }
 
   .productdisplay-img-list img {
-    height: 73px;
+    height: 73.6px;
     width: auto;
   }
 
