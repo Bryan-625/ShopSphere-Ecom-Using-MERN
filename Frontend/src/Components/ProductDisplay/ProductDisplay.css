@@ -553,13 +553,13 @@
 @media (max-width: 380px) {
 
   .productdisplay-img-list img {
-    height: 67.5px;
+    height: 61.5px;
     width: auto;
   }
 
   .productdisplay-main-img {
     height: 340px;
-    width: 250px;
+    width: 230px;
   }
   
 }
