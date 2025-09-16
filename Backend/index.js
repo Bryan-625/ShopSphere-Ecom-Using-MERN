@@ -3,14 +3,21 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-const cors = require("cors");
 const multer = require("multer");
-const { v2: cloudinary } = require("cloudinary");
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const path = require("path");
+const cors = require("cors");
+const cloudinary = require("cloudinary").v2;
 require("dotenv").config();
 
 app.use(express.json());
 app.use(cors());
+
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 // Data connection with MongoDB
 mongoose
@@ -28,34 +35,31 @@ app.get("/", (req, res) => {
   res.send("Rahul Rouchan Gogoi's ShopSphere App is running 🚀");
 });
 
-// Cloudinary configuration using CLOUDINARY_URL
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_URL.split("@")[1],
-  api_key: process.env.CLOUDINARY_URL.split(":")[1].split("/")[0],
-  api_secret: process.env.CLOUDINARY_URL.split(":")[2].split("@")[0],
-});
-
-// Multer + Cloudinary storage for image uploads
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: "ShopSphere_Products",
-    allowed_formats: ["jpg", "png", "jpeg", "webp"],
-    public_id: (req, file) => `product_${Date.now()}`,
+// Multer for file upload handling
+const storage = multer.diskStorage({
+  filename: (req, file, cb) => {
+    cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
   },
 });
 const upload = multer({ storage });
 
-// Upload endpoint
-app.post("/upload", upload.single("product"), (req, res) => {
-  console.log(req.file);
-  res.json({
-    success: 1,
-    image_url: req.file.path, // Cloudinary URL
-  });
+// Upload endpoint (Cloudinary)
+app.post("/upload", upload.single("product"), async (req, res) => {
+  try {
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "ShopSphere",
+    });
+    res.json({
+      success: 1,
+      image_url: result.secure_url,
+    });
+  } catch (err) {
+    console.error("Upload failed:", err);
+    res.status(500).json({ success: 0, error: "Upload failed" });
+  }
 });
 
-// Product Schema
+// Mongoose schema for Product
 const Product = mongoose.model("Product", {
   id: { type: Number, required: true },
   name: { type: String, required: true },
@@ -68,10 +72,10 @@ const Product = mongoose.model("Product", {
   available: { type: Boolean, default: true },
 });
 
-// Add product endpoint
+// Add Product
 app.post("/addproduct", async (req, res) => {
   let products = await Product.find({});
-  let id = products.length > 0 ? products[products.length - 1].id + 1 : 1;
+  let id = products.length ? products[products.length - 1].id + 1 : 1;
 
   const product = new Product({
     id,
@@ -83,27 +87,26 @@ app.post("/addproduct", async (req, res) => {
     old_price: req.body.old_price,
   });
 
-  console.log(product);
   await product.save();
-  console.log("Saved");
+  console.log("Product Saved:", product.name);
   res.json({ success: true, name: req.body.name });
 });
 
-// Delete product endpoint
+// Remove Product
 app.post("/removeproduct", async (req, res) => {
   await Product.findOneAndDelete({ id: req.body.id });
-  console.log("Removed");
-  res.json({ suceess: true, name: req.body.name });
+  console.log("Product Removed:", req.body.name);
+  res.json({ success: true, name: req.body.name });
 });
 
-// Get all products
+// Get All Products
 app.get("/allproducts", async (req, res) => {
-  let products = await Product.find({});
+  const products = await Product.find({});
   console.log("All products fetched");
   res.send(products);
 });
 
-// User Schema
+// Mongoose schema for Users
 const Users = mongoose.model("Users", {
   name: { type: String },
   email: { type: String, unique: true },
@@ -112,20 +115,15 @@ const Users = mongoose.model("Users", {
   date: { type: Date, default: Date.now },
 });
 
-// Signup endpoint
+// Signup
 app.post("/signup", async (req, res) => {
-  let check = await Users.findOne({ email: req.body.email });
+  const check = await Users.findOne({ email: req.body.email });
   if (check) {
-    return res.status(400).json({
-      success: false,
-      errors: "Existing user found with same email id.",
-    });
+    return res.status(400).json({ success: false, errors: "Existing user found with same email id." });
   }
 
-  let cart = {};
-  for (let i = 0; i < 300; i++) {
-    cart[i] = 0;
-  }
+  const cart = {};
+  for (let i = 0; i < 300; i++) cart[i] = 0;
 
   const user = new Users({
     name: req.body.username,
@@ -133,6 +131,7 @@ app.post("/signup", async (req, res) => {
     password: req.body.password,
     cartData: cart,
   });
+
   await user.save();
 
   const data = { user: { id: user.id } };
@@ -140,44 +139,34 @@ app.post("/signup", async (req, res) => {
   res.json({ success: true, token });
 });
 
-// Login endpoint
+// Login
 app.post("/login", async (req, res) => {
-  let user = await Users.findOne({ email: req.body.email });
-  if (user) {
-    const passCompare = req.body.password === user.password;
-    if (passCompare) {
-      const data = { user: { id: user.id } };
-      const token = jwt.sign(data, "secret_ecom");
-      res.json({ success: true, token });
-    } else {
-      res.json({ success: false, errors: "Wrong Password" });
-    }
-  } else {
-    res.json({
-      success: false,
-      errors: "Email not registered. Please sign up first",
-    });
-  }
+  const user = await Users.findOne({ email: req.body.email });
+  if (!user) return res.json({ success: false, errors: "Email not registered. Please sign up first" });
+
+  if (req.body.password !== user.password) return res.json({ success: false, errors: "Wrong Password" });
+
+  const data = { user: { id: user.id } };
+  const token = jwt.sign(data, "secret_ecom");
+  res.json({ success: true, token });
 });
 
-// New collection endpoint
+// New Collections
 app.get("/newcollections", async (req, res) => {
-  let products = await Product.find({});
-  let newcollection = products.slice(1).slice(-8);
+  const products = await Product.find({});
+  const newcollection = products.slice(1).slice(-8);
   console.log("New Collection Fetched");
   res.send(newcollection);
 });
 
-// Popular in all category
+// Popular in all categories
 app.get("/popularinallcategory", async (req, res) => {
   try {
-    let menProducts = await Product.find({ category: "men" }).skip(8).limit(4);
-    let womenProducts = await Product.find({ category: "women" }).limit(4);
-    let kidsProducts = await Product.find({ category: "kid" }).limit(4);
-
-    let popularProducts = { men: menProducts, women: womenProducts, kid: kidsProducts };
+    const menProducts = await Product.find({ category: "men" }).skip(8).limit(4);
+    const womenProducts = await Product.find({ category: "women" }).limit(4);
+    const kidsProducts = await Product.find({ category: "kid" }).limit(4);
+    res.send({ men: menProducts, women: womenProducts, kid: kidsProducts });
     console.log("Popular in all categories fetched");
-    res.send(popularProducts);
   } catch (err) {
     console.error("Error fetching products:", err);
     res.status(500).send({ error: "Internal Server Error" });
@@ -187,48 +176,41 @@ app.get("/popularinallcategory", async (req, res) => {
 // Middleware to fetch user
 const fetchUser = async (req, res, next) => {
   const token = req.header("auth-token");
-  if (!token) {
+  if (!token) return res.status(401).send({ errors: "Please authenticate using valid token" });
+
+  try {
+    const data = jwt.verify(token, "secret_ecom");
+    req.user = data.user;
+    next();
+  } catch (err) {
     res.status(401).send({ errors: "Please authenticate using valid token" });
-  } else {
-    try {
-      const data = jwt.verify(token, "secret_ecom");
-      req.user = data.user;
-      next();
-    } catch (error) {
-      res.status(401).send({ errors: "Please authenticate using valid token" });
-    }
   }
 };
 
-// Cart endpoints
+// Cart APIs
 app.post("/addtocart", fetchUser, async (req, res) => {
-  console.log(req.body, req.user);
-  console.log("Added", req.body.itemId);
-  let userData = await Users.findOne({ _id: req.user.id });
+  const userData = await Users.findOne({ _id: req.user.id });
   userData.cartData[req.body.itemId] += 1;
   await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
   res.send("Added");
 });
 
 app.post("/removefromcart", fetchUser, async (req, res) => {
-  console.log("Removed", req.body.itemId);
-  let userData = await Users.findOne({ _id: req.user.id });
+  const userData = await Users.findOne({ _id: req.user.id });
   if (userData.cartData[req.body.itemId] > 0) userData.cartData[req.body.itemId] -= 1;
   await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
   res.send("Removed");
 });
 
 app.post("/getcart", fetchUser, async (req, res) => {
-  console.log("Get cart");
-  let userData = await Users.findOne({ _id: req.user.id });
+  const userData = await Users.findOne({ _id: req.user.id });
   res.json(userData.cartData);
 });
 
-// Related products API
+// Related products
 app.get("/relatedproducts/:category", async (req, res) => {
   try {
-    const { category } = req.params;
-    const products = await Product.find({ category }).limit(4);
+    const products = await Product.find({ category: req.params.category }).limit(4);
     res.send(products);
   } catch (err) {
     console.error("Error fetching related products:", err);
@@ -236,16 +218,14 @@ app.get("/relatedproducts/:category", async (req, res) => {
   }
 });
 
-// Checkout API
+// Checkout
 app.post("/checkout", fetchUser, async (req, res) => {
   try {
-    let userData = await Users.findOne({ _id: req.user.id });
-    let newCart = {};
+    const userData = await Users.findOne({ _id: req.user.id });
+    const newCart = {};
     for (let i = 0; i < 300; i++) newCart[i] = 0;
-
     userData.cartData = newCart;
     await userData.save();
-
     res.json({ success: true, message: "Order placed successfully!" });
   } catch (err) {
     console.error("Checkout error:", err);
@@ -253,10 +233,8 @@ app.post("/checkout", fetchUser, async (req, res) => {
   }
 });
 
+// Start server
 app.listen(port, (error) => {
-  if (!error) {
-    console.log("Server running on Port:" + port);
-  } else {
-    console.log("Error" + error);
-  }
+  if (!error) console.log("Server running on Port:" + port);
+  else console.log("Error" + error);
 });
